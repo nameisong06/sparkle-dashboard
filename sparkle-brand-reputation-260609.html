@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생수시장 브랜드 평판 순위 — 스파클 집중 분석</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif; background: #f5f5f3; color: #1a1a1a; padding: 2rem 1rem; }
+  .container { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0; }
+  .subtitle { font-size: 12px; color: #888; margin: 0 0 4px; }
+  .header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem; }
+  .badge { display: flex; align-items: center; gap: 6px; background: #EAF5FD; border: 1.5px solid #1E88C8; border-radius: 8px; padding: 6px 14px; }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #1E88C8; display: inline-block; }
+  .badge span { font-size: 13px; font-weight: 500; color: #0C5A8A; }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+  .metric { background: #efefec; border-radius: 8px; padding: 0.875rem; text-align: center; }
+  .metric.sparkle { background: #EAF5FD; border: 1.5px solid #1E88C8; }
+  .metric-label { font-size: 11px; color: #888; margin-bottom: 4px; }
+  .metric-value { font-size: 22px; font-weight: 500; }
+  .metric-value.blue { color: #1E88C8; }
+  .metric-sub { font-size: 11px; color: #aaa; margin-top: 4px; }
+  .metric-sub.blue { color: #1E88C8; }
+  .card { background: #fff; border: 0.5px solid #e0ded7; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+  .card-title { font-size: 13px; font-weight: 500; color: #888; margin-bottom: 1rem; }
+  .sparkle-card { background: #fff; border: 2px solid #1E88C8; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+  .sparkle-card-title { display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+  .sparkle-card-title-dot { width: 8px; height: 8px; border-radius: 50%; background: #1E88C8; display: inline-block; }
+  .sparkle-card-title p { font-size: 14px; font-weight: 500; color: #1E88C8; margin: 0; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; font-size: 12px; color: #888; }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-line { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+  .legend-line-sm { width: 10px; height: 2px; border-radius: 2px; display: inline-block; }
+  .chart-wrap { position: relative; width: 100%; height: 260px; }
+  .chart-wrap-sm { position: relative; width: 100%; height: 180px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed; }
+  th { text-align: center; padding: 7px 6px; border-bottom: 1px solid #e0ded7; color: #888; font-weight: 500; }
+  th:first-child { text-align: left; padding-left: 8px; width: 18%; }
+  td { text-align: center; padding: 9px 6px; border-bottom: 0.5px solid #e0ded7; color: #1a1a1a; }
+  td:first-child { text-align: left; padding-left: 8px; font-size: 12px; color: #888; white-space: nowrap; }
+  tr.sparkle-row { background: rgba(30,136,200,0.04); }
+  .brand-sparkle { display: inline-flex; align-items: center; gap: 4px; font-weight: 500; color: #0C5A8A; background: #EAF5FD; border-radius: 4px; padding: 3px 10px; }
+  .brand-sparkle-dot { width: 5px; height: 5px; border-radius: 50%; background: #1E88C8; display: inline-block; }
+  .footer { font-size: 11px; color: #aaa; margin-top: 0.5rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div>
+      <p class="subtitle">2025년 1월 — 2026년 4월 · 출처: 한국기업평판연구소 / brikorea.com</p>
+      <h1>생수시장 브랜드 평판 순위</h1>
+    </div>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>스파클 집중 분석</span>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">최고 순위</div>
+      <div class="metric-value">2위</div>
+      <div class="metric-sub">5회 달성</div>
+    </div>
+    <div class="metric sparkle">
+      <div class="metric-label" style="color:#0C5A8A;">최고 평판지수</div>
+      <div class="metric-value blue">233,155</div>
+      <div class="metric-sub blue">'26년 4월</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">분석 기간</div>
+      <div class="metric-value">7회</div>
+      <div class="metric-sub">조사 시점</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="legend">
+      <span class="legend-item" style="font-weight:500; color:#1E88C8;"><span class="legend-line" style="background:#1E88C8;"></span>스파클 ★</span>
+      <span class="legend-item"><span class="legend-line-sm" style="background:#5DCAA5;"></span>동원샘물</span>
+      <span class="legend-item"><span class="legend-line-sm" style="background:#D85A30;"></span>백산수</span>
+      <span class="legend-item"><span class="legend-line-sm" style="background:#AFA9EC;"></span>몽베스트</span>
+    </div>
+    <p class="card-title">순위 추이 (삼다수 제외 · 2~3위 경합)</p>
+    <div class="chart-wrap">
+      <canvas id="rankChart" role="img" aria-label="생수 브랜드 평판 순위 추이 꺾은선 차트."></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-title">조사 시점별 순위 상세</p>
+    <table>
+      <thead>
+        <tr>
+          <th>시점</th>
+          <th>1위</th>
+          <th>2위</th>
+          <th>3위</th>
+        </tr>
+      </thead>
+      <tbody id="detailTable"></tbody>
+    </table>
+  </div>
+
+  <div class="sparkle-card">
+    <div class="sparkle-card-title">
+      <span class="sparkle-card-title-dot"></span>
+      <p>스파클 평판지수 추이</p>
+    </div>
+    <div class="chart-wrap-sm">
+      <canvas id="scoreChart" role="img" aria-label="스파클 평판지수 추이 바 차트."></canvas>
+    </div>
+  </div>
+
+  <p class="footer">출처: 한국기업평판연구소(www.rekorea.net) · brikorea.com 월별 생수 브랜드 빅데이터 평판 분석 | 평판지수는 소비자 참여·미디어·소통·커뮤니티 지수 종합 산출</p>
+</div>
+
+<script>
+const periods = ["'25.1월","'25.6월","'25.9월","'25.10월","'25.12월","'26.1월","'26.4월"];
+
+const tableData = [
+  { period:"'25년 1월",  r1:"삼다수", r2:"스파클",   r3:"동원샘물" },
+  { period:"'25년 6월",  r1:"삼다수", r2:"몽베스트", r3:"스파클" },
+  { period:"'25년 9월",  r1:"삼다수", r2:"스파클",   r3:"몽베스트" },
+  { period:"'25년 10월", r1:"삼다수", r2:"스파클",   r3:"백산수" },
+  { period:"'25년 12월", r1:"삼다수", r2:"스파클",   r3:"동원샘물" },
+  { period:"'26년 1월",  r1:"삼다수", r2:"스파클",   r3:"백산수" },
+  { period:"'26년 4월",  r1:"삼다수", r2:"동원샘물", r3:"스파클" },
+];
+
+const tbody = document.getElementById('detailTable');
+tableData.forEach(row => {
+  function cell(brand) {
+    const isS = brand === '스파클';
+    return `<td>${isS
+      ? `<span class="brand-sparkle"><span class="brand-sparkle-dot"></span>${brand}</span>`
+      : brand}</td>`;
+  }
+  const tr = document.createElement('tr');
+  if (row.r2 === '스파클') tr.className = 'sparkle-row';
+  tr.innerHTML = `<td>${row.period}</td>${cell(row.r1)}${cell(row.r2)}${cell(row.r3)}`;
+  tbody.appendChild(tr);
+});
+
+new Chart(document.getElementById('rankChart'), {
+  type: 'line',
+  data: {
+    labels: periods,
+    datasets: [
+      { label:'스파클', data:[2,3,2,2,2,2,3], borderColor:'#1E88C8', borderWidth:3, pointRadius:6, pointHoverRadius:8, pointBackgroundColor:'#1E88C8', pointBorderColor:'#fff', pointBorderWidth:2, tension:0.3, fill:true, backgroundColor:'rgba(30,136,200,0.08)', order:0 },
+      { label:'동원샘물', data:[3,null,null,null,3,null,2], borderColor:'#5DCAA5', borderWidth:1.5, borderDash:[3,3], pointRadius:4, pointBackgroundColor:'#5DCAA5', tension:0.2, fill:false, spanGaps:false },
+      { label:'백산수',   data:[null,null,null,3,null,3,null], borderColor:'#D85A30', borderWidth:1.5, borderDash:[3,3], pointRadius:4, pointBackgroundColor:'#D85A30', tension:0.2, fill:false, spanGaps:false },
+      { label:'몽베스트', data:[null,2,null,null,null,null,null], borderColor:'#AFA9EC', borderWidth:1.5, borderDash:[3,3], pointRadius:4, pointBackgroundColor:'#AFA9EC', tension:0.2, fill:false, spanGaps:false },
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}위` } } },
+    scales:{
+      y:{ reverse:true, min:1.5, max:3.5, ticks:{ stepSize:1, callback: v => Number.isInteger(v)?v+'위':'', color:'#888' }, grid:{ color:'rgba(0,0,0,0.07)' } },
+      x:{ ticks:{ color:'#888', autoSkip:false, maxRotation:30 }, grid:{display:false} }
+    }
+  }
+});
+
+new Chart(document.getElementById('scoreChart'), {
+  type: 'bar',
+  data: {
+    labels: ["'25.12월","'26.1월","'26.4월"],
+    datasets:[{
+      label:'평판지수',
+      data:[228997,222175,233155],
+      backgroundColor:['rgba(30,136,200,0.5)','rgba(30,136,200,0.5)','rgba(30,136,200,0.85)'],
+      borderColor:'#1E88C8',
+      borderWidth:1.5,
+      borderRadius:4,
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}` } } },
+    scales:{
+      y:{ min:210000, ticks:{ callback: v => (v/10000).toFixed(0)+'만', color:'#888' }, grid:{ color:'rgba(0,0,0,0.07)' } },
+      x:{ ticks:{ color:'#888' }, grid:{display:false} }
+    }
+  }
+});
+</script>
+</body>
+</html>
